@@ -1,0 +1,11 @@
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class GlobalService {
+
+
+  constructor() {
+    public gameCount: number = 0;
+  }
+
+}

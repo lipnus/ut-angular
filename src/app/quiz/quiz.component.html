@@ -1,0 +1,17 @@
+<p> #{{globalService.gameCount}} </p>
+
+<button (click)="onClick_listen()">듣기</button>
+
+<br>
+
+<!-- (keyup)="onChange_search()" -->
+<form>
+    <div class="answerContainer">
+      <input type="text" name="answer" [(ngModel)]="answerStr"  required="required"/><span class="highlight"></span><span class="bar"></span>
+      <!-- <label>Ansower</label> -->
+    </div>
+  </form>
+
+<br>
+
+<button (click)="onClick_submit()">제출</button>
