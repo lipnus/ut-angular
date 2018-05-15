@@ -1,0 +1,52 @@
+.container{
+  text-align: center;
+  height: 250vw;
+  width: 100vw;
+  background: linear-gradient( to top, #8BB2DF, #B2D6FF );
+}
+
+
+.title{
+  display: inline-block;
+  position: fixed;
+  width: 60%;
+  left: 50%;
+  margin-left: -30%;
+  margin-top: 30%;
+}
+
+.naver-login{
+  display: inline-block;
+  position: fixed;
+  width: 80%;
+  bottom: 0px;
+  left: 50%;
+  margin-left: -40%;
+  margin-bottom: 130px;
+}
+
+.subtitle{
+  display: inline-block;
+  position: fixed;
+  width: 40%;
+  bottom: 0px;
+  left: 50%;
+  margin-left: -20%;
+  margin-bottom: 50px;
+}
+
+.foot-container{
+  display: inline-block;
+  position: fixed;
+  width: 90%;
+  bottom: 0px;
+  left: 50%;
+  margin-left: -45%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.foot-text{
+  color: #ffffff;
+  font-size: 12px;
+}
