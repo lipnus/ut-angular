@@ -22,7 +22,7 @@ export class AnswerComponent implements OnInit {
   ngOnInit() {
 
     //테스트용 경로
-    this.setYoutubePath("https://youtu.be/oBB1SIg2MdI");
+    this.setYoutubePath("https://youtu.be/tXV7dfvSefo");
   }
 
   //경로 지정
@@ -40,7 +40,7 @@ export class AnswerComponent implements OnInit {
   }
 
   onClick_next(){
-    if(this.globalService.gameCount > 4){
+    if(this.globalService.gameCount > 2){
         this.globalService.gameCount = 1;
         this.router.navigate(['/result']);
     }else{

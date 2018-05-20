@@ -1,17 +1,36 @@
-<p> #{{globalService.gameCount}} </p>
+<div class="container">
 
-<button (click)="onClick_listen()">듣기</button>
+  <!-- 배경이미지 -->
+  <img class="sound-background" src="assets/movingbackgroud.gif"/>
 
-<br>
+  <!-- 음악재생부분 -->
+  <div class="menu-container">
+    <img class="guide" src="assets/guide.png"/>
 
-<!-- (keyup)="onChange_search()" -->
-<form>
-    <div class="answerContainer">
-      <input type="text" name="answer" [(ngModel)]="answerStr"  required="required"/><span class="highlight"></span><span class="bar"></span>
-      <!-- <label>Ansower</label> -->
-    </div>
-  </form>
+    <img *ngIf="isPlaying==0" (click)="onClick_play()" class="play" src="assets/unactive_play.png"/>
+    <img *ngIf="isPlaying==1" class="playing" src="assets/play.gif"/>
+  </div>
 
-<br>
+  <br>
 
-<button (click)="onClick_submit()">제출</button>
+
+  <table class="bottom-table">
+  <tbody>
+  <tr style="width: 100%;">
+    <td style="width: 74%;">
+      <form>
+        <div class="group">
+          <input class="" type="text" name="answerInput" [(ngModel)]="answerStr"  required="required"/><span class="highlight"></span><span class="bar"></span>
+          <label>이 노래의 이름은?</label>
+        </div>
+      </form>
+    </td>
+    <td style="color:#ffffff; width: 25%;">
+      <img class="submit-btn" src="assets/send.png" (click)="onClick_submit()"/>
+    </td>
+  </tr>
+  </tbody>
+  </table>
+
+
+</div>

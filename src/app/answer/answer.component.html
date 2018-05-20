@@ -1,7 +1,25 @@
+<div class="answer-container">
 
-<iframe width="100%" height="300px" [src]='this.youtubePath' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <iframe class="youtube" width="100%" height="250px" [src]='this.youtubePath' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-<p> #{{globalService.gameCount}} </p>
-<p>  정답표시 </p>
+  <!-- <p class="count"> #{{globalService.gameCount}} </p> -->
 
-<button (click)="onClick_next()">다음문제</button>
+  <div class="album-container">
+    <img class="album-img" src="assets/album.jpg">
+
+    <div class="album-info">
+      <div class="title">벚꽃엔딩</div>
+      <div class="singer">버스커버스커</div>
+      <div class="album-name">버스커버스커 1집</div>
+      <div class="album-date">2012.03.29</div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+  <img (click)="onClick_next()" class="btn" src="assets/nextqui.png"/>
+
+<!-- <button (click)="onClick_next()">다음문제</button> -->

@@ -12,20 +12,23 @@ import * as mGlobal from '../global-variables';  //전역변수
 export class QuizComponent implements OnInit {
 
   answerStr: string;
+  isPlaying: number;
 
   constructor(
     private router: Router,
     private globalService: GlobalService) { }
 
   ngOnInit() {
+    this.isPlaying = 0;
   }
 
   onClick_submit(){
     this.router.navigate(['/answer']);
   }
 
-  onClick_listen(){
-    window.alert("듣기");
+  onClick_play(){
+    console.log("클릭");
+    this.isPlaying = 1;
   }
 
 

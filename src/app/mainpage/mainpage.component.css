@@ -1,0 +1,31 @@
+.container{
+  text-align: center;
+  height: 250vw;
+  width: 100vw;
+  background: #060405;
+}
+
+.menu-container{
+  display: inline-block;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  margin-top: 30%;
+}
+
+.btn{
+  display: inline-block;
+  width: 80%;
+  margin-bottom: 4px;
+}
+
+
+.subtitle{
+  display: inline-block;
+  position: fixed;
+  width: 40%;
+  bottom: 0px;
+  left: 50%;
+  margin-left: -20%;
+  margin-bottom: 40px;
+}
