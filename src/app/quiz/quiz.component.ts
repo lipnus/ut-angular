@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 //[service]
 import { GlobalService } from '../service/index';
@@ -24,6 +25,7 @@ export class QuizComponent implements OnInit {
   countImgPath:string;
 
   audio:any;
+  isWrong:boolean;
 
 
   constructor(
@@ -33,6 +35,7 @@ export class QuizComponent implements OnInit {
     private http: HttpClient,) { }
 
   ngOnInit() {
+    this.isWrong=false;
     this.setcountButton();
     this.audio = new Audio();
     this.audioListener();
@@ -72,14 +75,20 @@ export class QuizComponent implements OnInit {
     let postData = {user_pk:0, music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:1};
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
-      this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
+      // this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
 
-      // console.log(data.result);
-      // if(data.result == "correct"){
-      //   this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
-      // }else{
-      //   this.answerStr="";
-      // }
+      console.log(data.result);
+      if(data.result == "correct"){
+        this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
+      }else{
+        this.isWrong=true;
+
+        setTimeout(function() {
+          console.log("???");
+          // this.onClick_cancel();
+          this.isWrong=false;
+        }, 1000);
+      }
 
     });
   }
@@ -87,8 +96,8 @@ export class QuizComponent implements OnInit {
   audioListener(){
     //재생중일때
     this.audio.addEventListener("timeupdate", (currentTime)=>{
-      console.log("cur: " + this.audio.currentTime);
-      if( this.audio.currentTime>4){
+      // console.log("cur: " + this.audio.currentTime);
+      if( this.audio.currentTime>1.5){
         this.stopMusic();
       }
     });
@@ -119,8 +128,8 @@ export class QuizComponent implements OnInit {
     this.audio.load();
     this.audio.play();
 
-    //2초부터 시작
-    this.audio.currentTime = 2;
+    //시작
+    this.audio.currentTime = 0;
   }
 
   onClick_submit(){
@@ -134,6 +143,10 @@ export class QuizComponent implements OnInit {
 
   onClick_play(){
     this.startMusic();
+  }
+
+  onClick_cancel(){
+    this.isWrong = false;
   }
 
 

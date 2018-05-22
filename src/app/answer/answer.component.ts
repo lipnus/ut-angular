@@ -80,11 +80,16 @@ export class AnswerComponent implements OnInit {
   setYoutubePath(fullPath){
     let pathArray;
 
-    if(fullPath.indexOf('/')){
-      pathArray = fullPath.split("/");
+    if(fullPath.indexOf('=') > 0){
+      console.log("=");
+      pathArray = fullPath.split('=');
+      // pathArray = fullPath.split("/");
     }else{
-      pathArray = fullPath.split("=");
+      console.log("/");
+      pathArray = fullPath.split('/');
     }
+
+    console.log("아이디: " +  pathArray[pathArray.length-1]);
 
     this.youtubePath = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + pathArray[pathArray.length-1] + '?autoplay=1');
 

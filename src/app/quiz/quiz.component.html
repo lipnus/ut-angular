@@ -1,8 +1,5 @@
 <div class="container">
 
-
-
-
   <!-- 음악재생부분 -->
   <div class="menu-container">
     <img class="count-img" [src]="countImgPath"/>
@@ -27,6 +24,6 @@
   <img class="mola-btn" (click)="onClick_pass()" src="assets/mola.png"/>
   <img class="submit-btn" (click)="onClick_submit()" src="assets/submit.png"/>
 
-
+<img *ngIf="isWrong" class="wrong" src="assets/wronganswer.png" (click)="onClick_cancel()">
 
 </div>

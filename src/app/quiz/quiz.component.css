@@ -5,6 +5,15 @@
   background: #11162F;
 }
 
+.wrong{
+  display: inline-block;
+  position: fixed;
+  top: 40%;
+  width: 40%;
+  left: 50%;
+  margin-left: -20%;
+}
+
 .count-img{
   display: inline-block;
   position: fixed;
