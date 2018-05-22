@@ -10,6 +10,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 // [Service]
 import { GlobalService } from './service/global.service';
+import { PostToServerService } from './service/post-to-server.service';
 
 // [Component]
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ import { ResultComponent } from './result/result.component';
   ],
   providers: [
     GlobalService,
+    PostToServerService,
     {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent]

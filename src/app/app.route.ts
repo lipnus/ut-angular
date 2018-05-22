@@ -19,6 +19,8 @@ const routes: Routes = [
   { path: 'information', component: InformationComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'answer', component: AnswerComponent },
+  { path: 'answer/:music_pk', component: AnswerComponent },
+
   { path: 'result', component: ResultComponent },
   { path: '**', redirectTo: ''}
 

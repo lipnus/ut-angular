@@ -1,17 +1,31 @@
 .container{
   text-align: center;
-  height: 200vw;
+  height: 100vh;
   width: 100vw;
-  background: linear-gradient( to top, #8BB2DF, #B2D6FF );
+  background: #11162F;
+}
+
+.backgroud-img{
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.testver{
+  display: inline-block;
+  position: fixed;
+  top:0;
+  right: 0;
 }
 
 .title{
   display: inline-block;
   position: fixed;
+  top:0;
   width: 60%;
   left: 50%;
   margin-left: -30%;
-  margin-top: 30%;
+  margin-top: 36%;
 }
 
 .naver-login{
@@ -21,7 +35,7 @@
   bottom: 0px;
   left: 50%;
   margin-left: -40%;
-  margin-bottom: 130px;
+  margin-bottom: 80px;
 }
 
 .subtitle{
@@ -31,7 +45,7 @@
   bottom: 0px;
   left: 50%;
   margin-left: -20%;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .foot-container{
