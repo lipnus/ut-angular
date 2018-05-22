@@ -7,7 +7,7 @@ import { GlobalService } from '../service/index';
 import { PostToServerService } from '../service/index';
 
 //[model]
-import { MusicInfo } form '../model/index';
+import { MusicInfo } from '../model/index';
 import * as mGlobal from '../global-variables';  //전역변수
 
 @Component({
@@ -21,6 +21,7 @@ export class QuizComponent implements OnInit {
   isPlaying: number;
 
   musicInfo:MusicInfo;
+  countImgPath:string;
 
   audio:Audio;
 
@@ -32,9 +33,9 @@ export class QuizComponent implements OnInit {
     private http: HttpClient,) { }
 
   ngOnInit() {
+    this.setcountButton();
     this.audio = new Audio();
     this.audioListener();
-
     this.isPlaying = 0;
     this.postMusic();
   }
@@ -43,9 +44,21 @@ export class QuizComponent implements OnInit {
     console.log("???");
   }
 
+  setcountButton(){
+    let count = 1; //혹시 값이 유실되었을 때를 대비
+    count = this.globalService.gameCount;
+
+    console.log(count);
+    if(count==1){this.countImgPath="assets/1stquiz.png";}
+    else if(count==2){this.countImgPath="assets/2ndquiz.png";}
+    else if(count==3){this.countImgPath="assets/3rdquiz.png";}
+    else if(count==4){this.countImgPath="assets/4thquiz.png";}
+    else if(count==5){this.countImgPath="assets/5thquiz.png";}
+    else{this.countImgPath="assets/1stquiz.png";}
+  }
+
   postMusic(){
     console.log("postMusic()");
-
     let path = '/music';
     let postData = {user_pk:0, music_pk:0};
 
@@ -59,9 +72,14 @@ export class QuizComponent implements OnInit {
     let postData = {user_pk:0, music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:1};
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
-      if(data.result == "correct"){
-        this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
-      }
+      this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
+
+      // console.log(data.result);
+      // if(data.result == "correct"){
+      //   this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
+      // }else{
+      //   this.answerStr="";
+      // }
 
     });
   }
@@ -106,7 +124,12 @@ export class QuizComponent implements OnInit {
   }
 
   onClick_submit(){
+    console.log("submit");
     this.postAnswer();
+  }
+
+  onClick_pass(){
+    console.log("pass");
   }
 
   onClick_play(){

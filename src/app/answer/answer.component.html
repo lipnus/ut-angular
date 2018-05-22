@@ -10,7 +10,7 @@
     <div class="album-info">
       <div class="title">{{musicInfo?.music_name}}</div>
       <div class="singer">{{musicInfo?.musician}}</div>
-      <!-- <div class="album-name">버스커버스커 1집</div> -->
+      <div class="album-name">{{musicInfo?.album_name}}</div>
       <div class="album-date">{{musicInfo?.date}}</div>
     </div>
   </div>
@@ -20,6 +20,6 @@
 
 
 
-  <img (click)="onClick_next()" class="btn" src="assets/nextqui.png"/>
+  <img (click)="onClick_next()" class="btn" [src]="countImgPath"/>
 
 <!-- <button (click)="onClick_next()">다음문제</button> -->

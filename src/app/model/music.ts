@@ -3,9 +3,10 @@ export class MusicInfo{
   music_pk:number;
   music_name:string;
   music_path:string; //파일명만
-  youtube:string:
+  youtube:string;
   musician:string;
   album:string;
+  album_name:string;
   date:string;
   genre:string;
 }

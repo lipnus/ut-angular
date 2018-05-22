@@ -10,7 +10,7 @@ import { GlobalService } from '../service/index';
 import { PostToServerService } from '../service/index';
 
 //[model]
-import { MusicInfo } form '../model/index';
+import { MusicInfo } from '../model/index';
 import * as mGlobal from '../global-variables';  //전역변수
 
 @Component({
@@ -21,8 +21,8 @@ import * as mGlobal from '../global-variables';  //전역변수
 export class AnswerComponent implements OnInit {
 
   youtubePath;
-  count;
 
+  countImgPath: string;
   music_pk:number; //quiz.ts에서 받아온 값
   musicInfo:MusicInfo;
 
@@ -38,8 +38,22 @@ export class AnswerComponent implements OnInit {
 
     //주소뒤에 붙은 숫자 가져오기
     this.music_pk = this.activeRoute.snapshot.paramMap.get('music_pk');
+    this.setcountButton();
     this.postMusic(this.music_pk);
+  }
 
+  setcountButton(){
+    let count = 1; //혹시 값이 유실되었을 때를 대비
+    count = this.globalService.gameCount;
+
+    if(count==1){this.countImgPath="assets/2ndnextquiz.png";}
+    else if(count==2){this.countImgPath="assets/3rdnextquiz.png";}
+    else if(count==3){this.countImgPath="assets/4thnextquiz.png";}
+    else if(count==4){this.countImgPath="assets/5thnextquiz.png";}
+    else if(count>4){this.countImgPath="assets/result.png"}
+    else{
+      this.countImgPath="assets/nextquiz.png";
+    }//if
   }
 
   postMusic(music_pk:number){
@@ -71,15 +85,13 @@ export class AnswerComponent implements OnInit {
   }
 
   onClick_next(){
-    if(this.globalService.gameCount > 2){
+    if(this.globalService.gameCount > 4){
         this.globalService.gameCount = 1;
         this.router.navigate(['/result']);
     }else{
       this.router.navigate(['/quiz']);
       this.globalService.gameCount++;
     }
-
-
   }
 
 

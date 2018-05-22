@@ -1,36 +1,32 @@
 <div class="container">
 
-  <!-- 배경이미지 -->
-  <img class="sound-background" src="assets/movingbackgroud.gif"/>
+
+
 
   <!-- 음악재생부분 -->
   <div class="menu-container">
+    <img class="count-img" [src]="countImgPath"/>
     <img class="guide" src="assets/guide.png"/>
 
-    <img *ngIf="isPlaying==0" (click)="onClick_play()" class="play" src="assets/unactive_play.png"/>
-    <img *ngIf="isPlaying==1" class="playing" src="assets/play.gif"/>
+    <img *ngIf="isPlaying==0" (click)="onClick_play()" class="play" src="assets/unactiveturntable.png"/>
+    <img *ngIf="isPlaying==1" class="playing" src="assets/activeturntable.gif"/>
   </div>
 
   <br>
 
+  <div class="answer-container">
+    <form>
+      <div class="group">
+        <input class="" type="text" name="answerInput" [(ngModel)]="answerStr"  required="required"/><span class="highlight"></span><span class="bar"></span>
+        <label>이 노래의 이름은?</label>
+      </div>
+    </form>
+  </div>
 
-  <table class="bottom-table">
-  <tbody>
-  <tr style="width: 100%;">
-    <td style="width: 74%;">
-      <form>
-        <div class="group">
-          <input class="" type="text" name="answerInput" [(ngModel)]="answerStr"  required="required"/><span class="highlight"></span><span class="bar"></span>
-          <label>이 노래의 이름은?</label>
-        </div>
-      </form>
-    </td>
-    <td style="color:#ffffff; width: 25%;">
-      <img class="submit-btn" src="assets/send.png" (click)="onClick_submit()"/>
-    </td>
-  </tr>
-  </tbody>
-  </table>
+  <div ></div>
+  <img class="mola-btn" (click)="onClick_pass()" src="assets/mola.png"/>
+  <img class="submit-btn" (click)="onClick_submit()" src="assets/submit.png"/>
+
 
 
 </div>
