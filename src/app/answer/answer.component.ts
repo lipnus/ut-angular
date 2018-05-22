@@ -23,7 +23,8 @@ export class AnswerComponent implements OnInit {
   youtubePath;
 
   countImgPath: string;
-  music_pk:number; //quiz.ts에서 받아온 값
+  albumPath:string;
+  music_pk:any; //quiz.ts에서 받아온 값
   musicInfo:MusicInfo;
 
   constructor(
@@ -63,11 +64,16 @@ export class AnswerComponent implements OnInit {
     this.postToServerService.postServer(path, postData).subscribe(data => {
       this.musicInfo = data;
 
-      console.log("유튭: " +this.musicInfo.youtube);
+      //앨범자켓 경로설정
+      this.setAlbumPath(this.musicInfo.album);
 
       //유튜브 경로설정
       this.setYoutubePath(this.musicInfo.youtube);
     });
+  }
+
+  setAlbumPath(fileName:string){
+    this.albumPath = mGlobal.AlbumPath + fileName;
   }
 
   //경로 지정

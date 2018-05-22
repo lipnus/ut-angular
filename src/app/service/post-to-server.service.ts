@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map'
 
-import { TestPost } from '../model/test-post';
 import * as mGlobal from '../global-variables';  //전역변수
 
 @Injectable()

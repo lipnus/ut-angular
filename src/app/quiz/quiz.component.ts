@@ -23,7 +23,7 @@ export class QuizComponent implements OnInit {
   musicInfo:MusicInfo;
   countImgPath:string;
 
-  audio:Audio;
+  audio:any;
 
 
   constructor(
