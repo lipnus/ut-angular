@@ -81,15 +81,15 @@ export class AnswerComponent implements OnInit {
     let pathArray;
 
     if(fullPath.indexOf('=') > 0){
-      console.log("=");
+      // console.log("=");
       pathArray = fullPath.split('=');
       // pathArray = fullPath.split("/");
     }else{
-      console.log("/");
+      // console.log("/");
       pathArray = fullPath.split('/');
     }
 
-    console.log("아이디: " +  pathArray[pathArray.length-1]);
+    // console.log("아이디: " +  pathArray[pathArray.length-1]);
 
     this.youtubePath = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + pathArray[pathArray.length-1] + '?autoplay=1');
 

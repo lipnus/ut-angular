@@ -27,6 +27,8 @@ export class QuizComponent implements OnInit {
   audio:any;
   isWrong:boolean;
 
+  tryCount:number;
+
 
   constructor(
     private router: Router,
@@ -40,6 +42,9 @@ export class QuizComponent implements OnInit {
     this.audio = new Audio();
     this.audioListener();
     this.isPlaying = 0;
+
+    this.tryCount = 1;
+
     this.postMusic();
   }
 
@@ -72,16 +77,18 @@ export class QuizComponent implements OnInit {
 
   postAnswer(){
     let path = '/answer';
-    let postData = {user_pk:0, music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:1};
+    let postData = {user_pk:35, music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:this.tryCount};
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
       // this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
 
       console.log(data.result);
       if(data.result == "correct"){
+        this.globalService.stageScore += data.score;
         this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
       }else{
         this.isWrong=true;
+        this.tryCount += 1;
 
         setTimeout(function() {
           console.log("???");
