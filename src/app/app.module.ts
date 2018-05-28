@@ -23,6 +23,9 @@ import { AnswerComponent } from './answer/answer.component';
 import { ResultComponent } from './result/result.component';
 import { JoinComponent } from './join/join.component';
 
+//[Guard]
+import { AuthGuard } from './guard/index';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ import { JoinComponent } from './join/join.component';
     GlobalService,
     PostToServerService,
     {provide: LocationStrategy, useClass: HashLocationStrategy},
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

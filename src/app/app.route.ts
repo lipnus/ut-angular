@@ -11,13 +11,16 @@ import { AnswerComponent } from './answer/answer.component';
 import { ResultComponent } from './result/result.component';
 import { JoinComponent } from './join/join.component';
 
+//[Guard]
+import { AuthGuard } from './guard/index';
+
 
 const routes: Routes = [
 
   { path: '', component: SplashComponent },
   { path: 'splash', component: SplashComponent },
   { path: 'mainpage', component: MainpageComponent },
-  { path: 'ranking', component: RankingComponent },
+  { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] },
   { path: 'information', component: InformationComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'answer', component: AnswerComponent },

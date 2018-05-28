@@ -156,7 +156,7 @@ export class QuizComponent implements OnInit {
   }
 
   onClick_play(){
-    if(this.musicInfo.music_pk != null){
+    if(this.musicInfo.music_pk != undefined){
       this.startMusic();
     }else{
       this.router.navigate(['/mainpage']);
