@@ -13,14 +13,14 @@ import { JoinComponent } from './join/join.component';
 
 //[Guard]
 import { AuthGuard } from './guard/index';
-
+// , canActivate: [AuthGuard]
 
 const routes: Routes = [
 
   { path: '', component: SplashComponent },
   { path: 'splash', component: SplashComponent },
   { path: 'mainpage', component: MainpageComponent },
-  { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] },
+  { path: 'ranking', component: RankingComponent },
   { path: 'information', component: InformationComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'answer', component: AnswerComponent },
