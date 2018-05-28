@@ -35,7 +35,7 @@ export class RankingComponent implements OnInit {
 
   postRanking(){
     let path = '/ranking';
-    let postData = {user_pk:0};
+    let postData = {user_pk:1};
 
     this.postToServerService.postServer(path, postData).subscribe(data => {
       this.userList = data;

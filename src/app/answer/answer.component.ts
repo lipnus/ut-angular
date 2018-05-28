@@ -59,7 +59,7 @@ export class AnswerComponent implements OnInit {
 
   postMusic(music_pk:number){
     let path = '/music';
-    let postData = {user_pk:0, music_pk:music_pk};
+    let postData = {user_pk:1, music_pk:music_pk};
 
     this.postToServerService.postServer(path, postData).subscribe(data => {
       this.musicInfo = data;
@@ -90,11 +90,11 @@ export class AnswerComponent implements OnInit {
     }
 
     // console.log("아이디: " +  pathArray[pathArray.length-1]);
-
     this.youtubePath = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + pathArray[pathArray.length-1] + '?autoplay=1');
 
   }
 
+  //카운트를 조율하며 다음 버튼 컨트롤
   onClick_next(){
     if(this.globalService.gameCount > 4){
         this.globalService.gameCount = 1;

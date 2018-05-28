@@ -47,7 +47,7 @@ export class ResultComponent implements OnInit {
 
   postScore(score:number){
     let path = '/score';
-    let postData = {user_pk:35, score:score};
+    let postData = {user_pk:1, score:score};
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
       console.log(data);

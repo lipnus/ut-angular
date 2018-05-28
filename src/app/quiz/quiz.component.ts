@@ -43,8 +43,7 @@ export class QuizComponent implements OnInit {
     this.audioListener();
     this.isPlaying = 0;
 
-    this.tryCount = 1;
-
+    this.tryCount = 1; //시도횟수
     this.postMusic();
   }
 
@@ -68,21 +67,28 @@ export class QuizComponent implements OnInit {
   postMusic(){
     console.log("postMusic()");
     let path = '/music';
-    let postData = {user_pk:0, music_pk:0};
+    let postData = {user_pk:1, music_pk:0};
 
     this.postToServerService.postServer(path, postData).subscribe(data => {
-      this.musicInfo = data;
+
+      //문제가 다 떨어짐
+      if(data.result=="runout"){
+        alert("모든 퀴즈를 도전하셨어요.");
+        this.router.navigate(['/mainpage']);
+      }else{
+        this.musicInfo = data;
+      }
     });
   }
 
   postAnswer(){
     let path = '/answer';
-    let postData = {user_pk:35, music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:this.tryCount};
+    let postData = {user_pk:1, music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:this.tryCount};
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
       // this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
 
-      console.log(data.result);
+      console.log("결과: "+data.result);
       if(data.result == "correct"){
         this.globalService.stageScore += data.score;
         this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
@@ -150,7 +156,11 @@ export class QuizComponent implements OnInit {
   }
 
   onClick_play(){
-    this.startMusic();
+    if(this.musicInfo.music_pk != null){
+      this.startMusic();
+    }else{
+      this.router.navigate(['/mainpage']);
+    }
   }
 
   onClick_cancel(){

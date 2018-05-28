@@ -1,5 +1,8 @@
 
 export class MusicInfo{
+
+  result:string; //runout, ok;
+
   music_pk:number;
   music_name:string;
   music_path:string; //파일명만

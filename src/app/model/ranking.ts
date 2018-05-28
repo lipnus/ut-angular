@@ -1,7 +1,7 @@
 
 export class Ranking{
   user_pk:number;
-  name:string;
+  nickname:string;
   score:number;
 
 }
