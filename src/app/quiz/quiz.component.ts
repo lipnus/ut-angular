@@ -139,6 +139,7 @@ export class QuizComponent implements OnInit {
 
   onClick_pass(){
     console.log("pass");
+    this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
   }
 
   onClick_play(){

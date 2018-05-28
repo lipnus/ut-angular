@@ -9,6 +9,8 @@ import { InformationComponent } from './information/information.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { AnswerComponent } from './answer/answer.component';
 import { ResultComponent } from './result/result.component';
+import { JoinComponent } from './join/join.component';
+
 
 const routes: Routes = [
 
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
   { path: 'answer', component: AnswerComponent },
   { path: 'answer/:music_pk', component: AnswerComponent },
+  { path: 'join', component: JoinComponent },
+
 
   { path: 'result', component: ResultComponent },
   { path: '**', redirectTo: ''}

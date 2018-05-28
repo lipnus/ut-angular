@@ -21,6 +21,7 @@ import { InformationComponent } from './information/information.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { AnswerComponent } from './answer/answer.component';
 import { ResultComponent } from './result/result.component';
+import { JoinComponent } from './join/join.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ResultComponent } from './result/result.component';
     InformationComponent,
     QuizComponent,
     AnswerComponent,
-    ResultComponent
+    ResultComponent,
+    JoinComponent
   ],
   imports: [
     BrowserModule,
