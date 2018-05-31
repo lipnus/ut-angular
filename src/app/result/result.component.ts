@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 //[service]
 import { GlobalService } from '../service/index';
 import { PostToServerService } from '../service/index';
+import { CashService } from '../service/index';
 
 //[model]
 import { MusicInfo } from '../model/index';
@@ -25,11 +26,16 @@ export class ResultComponent implements OnInit {
     private router: Router,
     private globalService: GlobalService,
     private postToServerService: PostToServerService,
+    private cashService: CashService,
     private http: HttpClient,
   ) { }
 
   ngOnInit() {
-    this.score = this.globalService.stageScore;
+
+    //랭킹에서 돌아왔을때 보이도록
+    this.globalService.tempStageScore = this.globalService.stageScore;
+    this.score = this.globalService.tempStageScore;
+
     this.postScore(this.globalService.stageScore);
 
     this.rank = 0; //기본값
@@ -47,7 +53,7 @@ export class ResultComponent implements OnInit {
 
   postScore(score:number){
     let path = '/score';
-    let postData = {user_pk:1, score:score};
+    let postData = {naver_id:this.cashService.getNaverId(), score:score};
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
       console.log(data);

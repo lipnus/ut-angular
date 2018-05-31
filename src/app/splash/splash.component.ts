@@ -29,13 +29,18 @@ export class SplashComponent implements OnInit {
   }
 
   public onClick_naverLogin(){
-
       // this.router.navigate(['/mainpage']);
-      this.router.navigate(['/join']);
+      // this.router.navigate(['/join']);
 
+      var state = Math.floor(Math.random()*10000000);
+       // location.replace("https://nid.naver.com/oauth2.0/authorize?client_id=0Pechfht9BVKa7WombfB&response_type=code&redirect_uri=" + mGlobal.ServerPath + "/auth_naver&state=" + state);
 
-      // var state = Math.floor(Math.random()*10000000);
-      // location.replace("https://nid.naver.com/oauth2.0/authorize?client_id=9OJNhWuG6yafwYhzTuE2&response_type=code&redirect_uri=" + "http://localhost:9000/#/join" + "&state=" + state);
+      location.replace("https://nid.naver.com/oauth2.0/authorize?client_id=9OJNhWuG6yafwYhzTuE2&response_type=code&redirect_uri=" + "http://localhost:9000/auth_naver" + "&state=" + state);
+  }
+
+  public onClick_deleteCash(){
+    console.log("캐쉬삭제");
+    localStorage.removeItem('naver_id');
   }
 
 }

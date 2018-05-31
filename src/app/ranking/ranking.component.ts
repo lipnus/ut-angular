@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 //[service]
 import { GlobalService } from '../service/index';
 import { PostToServerService } from '../service/index';
+import { CashService } from '../service/index';
 
 //[model]
 import { Ranking } from '../model/index';
@@ -27,6 +28,7 @@ export class RankingComponent implements OnInit {
     private router: Router,
     private _location: Location,
     private postToServerService: PostToServerService,
+    private cashService: CashService,
     private http: HttpClient,) { }
 
   ngOnInit() {
@@ -35,7 +37,7 @@ export class RankingComponent implements OnInit {
 
   postRanking(){
     let path = '/ranking';
-    let postData = {user_pk:1};
+    let postData = {naver_id:this.cashService.getNaverId()};
 
     this.postToServerService.postServer(path, postData).subscribe(data => {
       this.userList = data;

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 //[service]
 import { GlobalService } from '../service/index';
 import { PostToServerService } from '../service/index';
+import { CashService } from '../service/index';
 
 //[model]
 import { MusicInfo } from '../model/index';
@@ -34,6 +35,7 @@ export class QuizComponent implements OnInit {
     private router: Router,
     private globalService: GlobalService,
     private postToServerService: PostToServerService,
+    private cashService: CashService,
     private http: HttpClient,) { }
 
   ngOnInit() {
@@ -64,10 +66,12 @@ export class QuizComponent implements OnInit {
     else{this.countImgPath="assets/1stquiz.png";}
   }
 
+  //문제요청
   postMusic(){
     console.log("postMusic()");
     let path = '/music';
-    let postData = {user_pk:1, music_pk:0};
+
+    let postData = {naver_id:this.cashService.getNaverId(), music_pk:0};
 
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
@@ -81,9 +85,10 @@ export class QuizComponent implements OnInit {
     });
   }
 
+  //답안제출
   postAnswer(){
     let path = '/answer';
-    let postData = {user_pk:1, music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:this.tryCount};
+    let postData = {naver_id:this.cashService.getNaverId(), music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:this.tryCount};
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
       // this.router.navigate(['/answer/' + this.musicInfo.music_pk]);

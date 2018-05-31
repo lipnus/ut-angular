@@ -11,6 +11,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 // [Service]
 import { GlobalService } from './service/global.service';
 import { PostToServerService } from './service/post-to-server.service';
+import { CashService } from './service/cash.service';
+
 
 // [Component]
 import { AppComponent } from './app.component';
@@ -52,6 +54,7 @@ import { AuthGuard } from './guard/index';
     PostToServerService,
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     AuthGuard,
+    CashService,
   ],
   bootstrap: [AppComponent]
 })

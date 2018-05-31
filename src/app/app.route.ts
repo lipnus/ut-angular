@@ -19,20 +19,18 @@ const routes: Routes = [
 
   { path: '', component: SplashComponent },
   { path: 'splash', component: SplashComponent },
-  { path: 'mainpage', component: MainpageComponent },
-  { path: 'ranking', component: RankingComponent },
-  { path: 'information', component: InformationComponent },
-  { path: 'quiz', component: QuizComponent },
-  { path: 'answer', component: AnswerComponent },
-  { path: 'answer/:music_pk', component: AnswerComponent },
-  { path: 'join', component: JoinComponent },
+  { path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuard] },
+  { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] },
+  { path: 'information', component: InformationComponent, canActivate: [AuthGuard] },
+  { path: 'quiz', component: QuizComponent, canActivate: [AuthGuard] },
+  { path: 'answer', component: AnswerComponent, canActivate: [AuthGuard] },
+  { path: 'answer/:music_pk', component: AnswerComponent, canActivate: [AuthGuard] },
+  { path: 'join', component: JoinComponent, canActivate: [AuthGuard] },
+  { path: 'join/:state', component: JoinComponent },
 
-
-  { path: 'result', component: ResultComponent },
+  { path: 'result', component: ResultComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: ''}
-
 ];
-
 
 @NgModule({
   imports: [ RouterModule .forRoot (routes) ],
