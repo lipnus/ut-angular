@@ -22,7 +22,4 @@ export class PostToServerService {
 
     return this.http.get(path).map(data => { return data });
   }
-  }
-
-
 }
