@@ -88,7 +88,12 @@ export class QuizComponent implements OnInit {
   //답안제출
   postAnswer(){
     let path = '/answer';
-    let postData = {naver_id:this.cashService.getNaverId(), music_pk:this.musicInfo.music_pk, answer:this.answerStr, try_count:this.tryCount};
+
+    //공백제거
+    let answer = this.answerStr;
+    answer = answer.replace( /(\s*)/g, "");
+
+    let postData = {naver_id:this.cashService.getNaverId(), music_pk:this.musicInfo.music_pk, answer:answer, try_count:this.tryCount};
     this.postToServerService.postServer(path, postData).subscribe(data => {
 
       // this.router.navigate(['/answer/' + this.musicInfo.music_pk]);
@@ -100,12 +105,6 @@ export class QuizComponent implements OnInit {
       }else{
         this.isWrong=true;
         this.tryCount += 1;
-
-        setTimeout(function() {
-          console.log("???");
-          // this.onClick_cancel();
-          this.isWrong=false;
-        }, 1000);
       }
 
     });
@@ -115,7 +114,7 @@ export class QuizComponent implements OnInit {
     //재생중일때
     this.audio.addEventListener("timeupdate", (currentTime)=>{
       // console.log("cur: " + this.audio.currentTime);
-      if( this.audio.currentTime>1.5){
+      if( this.audio.currentTime>2.8){
         this.stopMusic();
       }
     });

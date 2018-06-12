@@ -70,6 +70,7 @@
 #profile{
   font-size: 13px;
   text-align: right;
+  margin-bottom: 10px;
   width: auto;
   color: #3267F6;
 }
@@ -78,6 +79,7 @@
   width: 45px;
   height: auto;
 }
+
 
 .back-btn{
   display: inline-block;
